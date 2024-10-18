@@ -28,9 +28,9 @@ def post_detail(request, id: int):
             'location',
             'author'
         ).exclude(
-            Q(is_published=False) |
-            Q(category__is_published=False) |
-            Q(pub_date__gt=datetime.now())),
+            Q(is_published=False)
+            | Q(category__is_published=False)
+            | Q(pub_date__gt=datetime.now())),
         id=id,
     )
     return render(request, 'blog/detail.html', {'post': posts})
