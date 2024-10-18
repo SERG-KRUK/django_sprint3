@@ -18,7 +18,7 @@ def index(request):
         request,
         "blog/index.html",
         {'post_list': post_list[:5]},
-)
+    )
 
 
 def post_detail(request, id: int):
