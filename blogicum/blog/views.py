@@ -2,8 +2,6 @@ from django.shortcuts import get_object_or_404, render
 
 from django.utils import timezone
 
-from django.db.models import Q
-
 from blog.models import Category, Post
 
 from .constants import POST_QUANTITY
