@@ -12,12 +12,24 @@ class PostInline(admin.StackedInline):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'is_published'
+    )
+    search_fields = ('title',)
+    list_filter = ('is_published',)
     inlines = (
         PostInline,
     )
 
 
 class LocationAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'is_published'
+    )
+    search_fields = ('name',)
+    list_filter = ('is_published',)
     inlines = (
         PostInline,
     )
