@@ -9,8 +9,7 @@ User = get_user_model()
 
 class Location(IsPublishedCreatedAt):
     name = models.CharField('Название места',
-                            max_length=LENGHT_CHARACTER_FIELDS
-    )
+                            max_length=LENGHT_CHARACTER_FIELDS)
 
     class Meta:
         verbose_name = 'местоположение'
