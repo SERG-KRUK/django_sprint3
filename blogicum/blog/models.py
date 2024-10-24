@@ -1,25 +1,27 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from .constants import LENGHT_TEXT, LIMIT_TEXT
+from .constants import LENGHT_CHARACTER_FIELDS, LIMIT_OUTPUT_STRING
 from core.models import IsPublishedCreatedAt
 
 User = get_user_model()
 
 
 class Location(IsPublishedCreatedAt):
-    name = models.CharField('Название места', max_length=LENGHT_TEXT)
+    name = models.CharField('Название места',
+                            max_length=LENGHT_CHARACTER_FIELDS
+    )
 
     class Meta:
         verbose_name = 'местоположение'
         verbose_name_plural = 'Местоположения'
 
     def __str__(self):
-        return self.name[:LIMIT_TEXT]
+        return self.name[:LIMIT_OUTPUT_STRING]
 
 
 class Category(IsPublishedCreatedAt):
-    title = models.CharField('Заголовок', max_length=LENGHT_TEXT)
+    title = models.CharField('Заголовок', max_length=LENGHT_CHARACTER_FIELDS)
     description = models.TextField('Описание')
     slug = models.SlugField(
         'Идентификатор',
@@ -33,11 +35,11 @@ class Category(IsPublishedCreatedAt):
         verbose_name_plural = 'Категории'
 
     def __str__(self):
-        return self.title[:LIMIT_TEXT]
+        return self.title[:LIMIT_OUTPUT_STRING]
 
 
 class Post(IsPublishedCreatedAt):
-    title = models.CharField('Заголовок', max_length=LENGHT_TEXT)
+    title = models.CharField('Заголовок', max_length=LENGHT_CHARACTER_FIELDS)
     text = models.TextField('Текст')
     pub_date = models.DateTimeField(
         'Дата и время публикации',
@@ -72,4 +74,4 @@ class Post(IsPublishedCreatedAt):
         ordering = ('-pub_date',)
 
     def __str__(self):
-        return self.title[:LIMIT_TEXT]
+        return self.title[:LIMIT_OUTPUT_STRING]
